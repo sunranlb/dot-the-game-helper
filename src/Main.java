@@ -63,6 +63,7 @@ public class Main {
         System.out.println(sb);
     }
     public static void main(String[] args) {
+        testMain();
         Scanner sc = new Scanner(System.in);
         while (true) {
             String ip = sc.nextLine();
@@ -75,5 +76,31 @@ public class Main {
                 }
             }
         }
+    }
+
+    private static void testMain() {
+        assert checkBoard();
+        sCorner[0][0] = true;
+        assert !checkBoard();
+        sBoard[0][0] = 1;
+        assert checkBoard();
+        sCorner = new boolean[][]{
+                {false, true, false, false, false},
+                {true, true, false, false, true},
+                {true, true, true, false, false},
+                {true, true, true, true, false},
+                {false, true, true, false, false}
+        };
+        sBoard = new int[][]{
+                {3, 2, 0, 1},
+                {4, 3, 1, 1,},
+                {4, 4, 3, 1},
+                {3, 4, 3, 1}
+        };
+        assert checkBoard();
+        sCorner[0][0] = true;
+        assert !checkBoard();
+        sBoard[0][0] = 4;
+        assert checkBoard();
     }
 }

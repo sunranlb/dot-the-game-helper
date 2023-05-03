@@ -7,7 +7,30 @@ public class Main {
     private static int[][] sBoard = new int[L][L];
     private static boolean[][] sCorner = new boolean[L + 1][L + 1];
 
-    private static final void printBoard() {
+    private static boolean checkBoard() {
+        for (int i = 0; i < L; i++) {
+            for (int j = 0; j < L; j++) {
+                int cnt = 0;
+                if (sCorner[i][j]) {
+                    cnt++;
+                }
+                if (sCorner[i][j + 1]) {
+                    cnt++;
+                }
+                if (sCorner[i + 1][j]) {
+                    cnt++;
+                }
+                if (sCorner[i + 1][j + 1]) {
+                    cnt++;
+                }
+                if (cnt != sBoard[i][j]) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+    private static void printBoard() {
         int i = 0;
         StringBuilder sb;
         for (; i < L; i++) {
@@ -40,7 +63,6 @@ public class Main {
         System.out.println(sb);
     }
     public static void main(String[] args) {
-        printBoard();
         Scanner sc = new Scanner(System.in);
         while (true) {
             String ip = sc.nextLine();
@@ -51,9 +73,7 @@ public class Main {
                 for (int i = 0; i < L * L; i++) {
                     sBoard[i / L][i % L] = ip.charAt(i) - '0';
                 }
-
             }
         }
-
     }
 }

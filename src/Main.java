@@ -51,8 +51,6 @@ public class Main {
     }
 
     private static boolean traverse(int i, int j) {
-        //2421342244213321
-//        System.out.println(i + "," + j);
         if (j == L) {
             j = 0;
             i++;
